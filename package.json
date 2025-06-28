@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "start": "node dist/index.js", 
-  "build": "tsc",                
-  "dev": "nodemon --watch './**/*.ts' --exec ts-node index.ts"
-}
-,
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch './**/*.ts' --exec ts-node index.ts",
+    "build": "node_modules/.bin/tsc"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
