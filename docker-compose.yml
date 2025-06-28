@@ -1,0 +1,11 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "400:400"
+    volumes:
+      - .:/app
+    restart: unless-stopped

@@ -4,8 +4,8 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 const router = Router();
-//const GEMINI_API_KEY = "AIzaSyCAnTM2XNZZ3DNVLvGCTJEou_3EZdMnn9A";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY_2}`;
 
 //router.use("/volectro", api_check_midd);
 
