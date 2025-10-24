@@ -52,6 +52,8 @@ npm run dev
 🙋‍♂️ Contributors
 
 Made with 💡 by the VolectroSheets Team @ Web Crawler squad
+-fardeen khan: https://github.com/Fark0910
+-Ajay Rajput:  https://github.com/ajayrajput8247
 
 
 📜 License
