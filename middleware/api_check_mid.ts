@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-
-export const api_check_midd = async (req: Request, res: Response, next: NextFunction) => {
+//future works
+interface userreq {
+  uid?: string;
+}
+export const api_check_midd = async (req: Request<userreq>, res: Response, next: NextFunction) => {
   try {
     const { uid } = req.body;
 

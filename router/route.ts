@@ -5,12 +5,14 @@ import dotenv from "dotenv";
 dotenv.config();
 const router = Router();
 
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY_2}`;
+//const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY_2}`;
+import gem from "../gem/gem";
+//router.use("/volectro", api_check_midd); //future works
+type userMess={
+    userMessage?:string;
+}
 
-//router.use("/volectro", api_check_midd);
-
-
-router.post("/volectro", async (req: Request, res: Response) => {
+router.post("/volectro", async (req: Request<userMess>, res: Response) => {
     try {
         
         const userMessage:string= req.body.message;
@@ -26,6 +28,8 @@ Given a user query about an electronic component, follow these exact steps:
 
 4. *Include the final datasheet link at the end* of the answer as a reference.
 
+5. *Include best link to study about it may include youtube link for tutorial if available*
+
 Formatting Template:
 
 - *Component Name:*  
@@ -37,17 +41,20 @@ Formatting Template:
 - *Special Features:*  
 - *Answer to Specific User Query:* (e.g., working principle, voltage rating, etc. — as asked)
 - *Official Datasheet Link:*  
+- *Link to Study Resources:*
 
 Strict Instructions:  
 ✔ Only use data from the manufacturer's official datasheet  
 ✔ Only one single datasheet link  
+✔ Only one single link for study resources
 ✔ No extra web search results or random websites  
 ✔ No AI filler text like "As an AI model..."      
 ✔ Be precise and fact-based  
 
 Now, process the following user query:  
 *${userMessage}*`
-
+        const aiResp = await gem(quer);
+        /*
         const geminiPayload = {
             contents: [
                 {
@@ -61,10 +68,10 @@ Now, process the following user query:
         const geminiRes = await axios.post(GEMINI_URL, geminiPayload, {
             headers: { "Content-Type": "application/json" }
         });
-
+           */
         // Extract Gemini response text
-        const aiText = geminiRes.data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI";
-        res.json({ response: aiText });
+       
+        res.json({ response: aiResp.text});
     } catch (error) {
         res.status(500).json({ error: "Failed to get AI response" });
     }
